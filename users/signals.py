@@ -12,6 +12,6 @@ def send_welcome_email(sender, instance, created, **kwargs):
         send_mail(
             "Welcome to goodreads clone site",
             f"Hi, {instance.username}. Welcome to Goodreads Clone. Enjoy the books and reviews",
-            "sanjarwer93@gmail.com",
+            "AdaptaMail@gmail.com",
             [instance.email]
         )
