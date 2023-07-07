@@ -1,4 +1,11 @@
 from pathlib import Path
+import environ
+import os
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -11,9 +18,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ofllc7%l^@3n%e8t)@xo9g=5w@@l8k1)nr3*e3d9cujwl0s9m&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = env('DEBUG')
 DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 LOGIN_URL = "users:login"
 
@@ -79,12 +86,8 @@ WSGI_APPLICATION = 'goodreads.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'goodreads',
-        'HOST': 'localhost',
-        'PORT': '5432',
-        'USER': 'postgres',
-        'PASSWORD': 'Uz7784508'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -141,12 +144,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'AdaptaMail@gmail.com'  # Your email address
-EMAIL_HOST_PASSWORD = 'uheqxjowmcqdoich'
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
 
 
 REST_FRAMEWORK = {
