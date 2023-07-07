@@ -12,7 +12,7 @@
                     <div class="card mb-4">
                       <div class="card-body">
                         <div class="media mb-3">
-                          <img src="{{ review.user.profile_picture.url }}" class="d-block ui-w-40 rounded-circle" alt="profile pic">
+                          <img src="{{ review.user.profile_picture.url }}" class="d-block ui-w-40 rounded-circle " alt="profile pic">
                           <div class="media-body ml-3">
                             <b>{{ review.user.username }}</b> rated to this book {{ review.stars_given }} stars
                             <div class="text-muted small">{{ review.created_at }}</div>
@@ -22,7 +22,7 @@
                         <p>
                             {{ review.comment | truncatechars:300 }}
                         </p>
-                          <a class="cover-pic text-center" href=""><img src="{{ review.book.cover_picture.url }}"></a>
+                          <a  class="cover-pic text-center" href=""><img class="cover-pic" src="{{ review.book.cover_picture.url }}"></a>
                       </div>
                     </div>
                 </div>
