@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('first_name', models.CharField(max_length=100)),
                 ('last_name', models.CharField(max_length=100)),
-                ('picture', models.ImageField(default='default_profile_pic.jpg', upload_to='media/authors')),
+                ('picture', models.ImageField(default='default_profile_pic.jpg', upload_to='media-files/authors')),
                 ('email', models.EmailField(max_length=254)),
                 ('bio', models.TextField()),
             ],
@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=200)),
                 ('description', models.TextField()),
                 ('isbn', models.CharField(max_length=17)),
-                ('cover_picture', models.ImageField(default='default_cover.jpg', upload_to='media/books')),
+                ('cover_picture', models.ImageField(default='default_cover.jpg', upload_to='media-files/books')),
             ],
         ),
         migrations.CreateModel(

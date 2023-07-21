@@ -17,7 +17,7 @@ class Book(models.Model):
     category = models.ForeignKey(Categories, on_delete=models.CASCADE)
     description = models.TextField()
     isbn = models.CharField(max_length=17)
-    cover_picture = models.ImageField(upload_to='media/books', default="default_cover.jpg")
+    cover_picture = models.ImageField(upload_to='media-files/books', default="default_cover.jpg")
 
     def __str__(self):
         return self.title
@@ -26,7 +26,7 @@ class Book(models.Model):
 class Author(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    picture = models.ImageField(upload_to='media/authors', default="default_profile_pic.jpg")
+    picture = models.ImageField(upload_to='media-files/authors', default="default_profile_pic.jpg")
     email = models.EmailField()
     bio = models.TextField()
 
