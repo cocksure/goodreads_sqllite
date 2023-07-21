@@ -5,11 +5,19 @@ from django.utils import timezone
 from users.models import CustomUser
 
 
+class Categories(models.Model):
+    name = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.name
+
+
 class Book(models.Model):
     title = models.CharField(max_length=200)
+    category = models.ForeignKey(Categories, on_delete=models.CASCADE)
     description = models.TextField()
     isbn = models.CharField(max_length=17)
-    cover_picture = models.ImageField(upload_to='media-files/', default="default_cover.jpg")
+    cover_picture = models.ImageField(upload_to='media-files/books', default="default_cover.jpg")
 
     def __str__(self):
         return self.title
@@ -18,6 +26,7 @@ class Book(models.Model):
 class Author(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
+    picture = models.ImageField(upload_to='media-files/authors', default="default_profile_pic.jpg")
     email = models.EmailField()
     bio = models.TextField()
 
@@ -31,6 +40,9 @@ class Author(models.Model):
 class BookAuthor(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.book.title
 
 
 class BookReview(models.Model):

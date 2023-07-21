@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Author info {% endblock title %}
+
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <img class="img-thumbnail mb-5" src="{{ author.picture.url }}">
+                    <table class="table p-3">
+                        <thead>
+                        <th>Books of {{ author.first_name }} {{ author.last_name }}</th>
+                        </thead>
+                        <tbody>
+                        <td>
+                            {% for book in books_by_author %}
+                                <li>
+                                    <a class=" text-secondary text-decoration-none" href="{% url 'books:detail' book.id %}">{{ book.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </td>
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+                <div class="col-md-6 text-">
+                    <p>Name: </p>
+                    <h3>{{ author.first_name }} {{ author.last_name }}</h3>
+                    <hr>
+                    <p>Email: </p>
+                    <h3>  {{ author.email }}  </h3>
+                    <hr>
+                    <p>Bio: </p>
+                    <h5>    {{ author.bio }}  </h5>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}
