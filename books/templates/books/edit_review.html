@@ -7,11 +7,26 @@
     <h3>Edit reviews</h3>
     <div class="row mb-4">
         <div class="col-6">
-            <form method="post" action="{% url 'books:update-reviews' book.id review.id %}">{% csrf_token %}
-                {{ review_form | crispy }}
+            <form method="post" action="{% url 'books:reviews' book.id %}">
+    {% csrf_token %}
+    <div class="rate">
+        <fieldset class="rating mb-3">
+            <input type="radio" id="star5" name="stars_given" value="5"/>
+            <label class="full" for="star5"></label>
+            <input type="radio" id="star4" name="stars_given" value="4"/>
+            <label class="full" for="star4"></label>
+            <input type="radio" id="star3" name="stars_given" value="3"/>
+            <label class="full" for="star3"></label>
+            <input type="radio" id="star2" name="stars_given" value="2"/>
+            <label class="full" for="star2"></label>
+            <input type="radio" id="star1" name="stars_given" value="1"/>
+            <label class="full" for="star1"></label>
+        </fieldset>
+    </div>
+    <textarea class="w-100 mb-3" name="comment" rows="5" cols="40"></textarea>
+    <button class="btn btn-success btn-sm" type="submit">Добавить отзыв</button>
+</form>
 
-                <button class="btn btn-success" type="submit"> Save </button>
-            </form>
         </div>
     </div>
 {% endblock content %}

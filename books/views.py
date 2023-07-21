@@ -31,9 +31,20 @@ def search_books(query):
     books = Book.objects.filter(title__icontains=query)
     return books
 
+class AuthorsDetailView(View):
+    def get(self, request, id):
+        author = Author.objects.get(id=id)
+        books_by_author = Book.objects.filter(bookauthor__author=author)
+
+        context = {
+            'author': author,
+            'books_by_author': books_by_author
+        }
+        return render(request, 'authors/authors_detail.html', context)
 
 class BooksView(View):
     def get(self, request):
+        book_author = BookAuthor
         categories = Categories.objects.all()
         search_query = request.GET.get('q', '')
         books = search_books(search_query) if search_query else Book.objects.all().order_by('id')
@@ -152,11 +163,11 @@ class UpdateBookReviewView(LoginRequiredMixin, View):
     def post(self, request, book_id, review_id):
         book = Book.objects.get(id=book_id)
         review = book.bookreview_set.get(id=review_id)
-        review_form = BookReviewForm(instance=review, data=request.POST)
+        review_form = BookReviewForm(data=request.POST, instance=review)
 
         if review_form.is_valid():
             review_form.save()
-            return redirect(reverse("books:detail", kwargs={"id": book.id}))
+            return redirect(reverse("books:detail", kwargs={"book_id": book.id}))
 
         context = {
             "book": book,
@@ -188,13 +199,4 @@ class DeleteReviewView(LoginRequiredMixin, View):
         return redirect(reverse("books:detail", kwargs={"id": book_id}))
 
 
-class AuthorsDetailView(View):
-    def get(self, request, id):
-        author = Author.objects.get(id=id)
-        books_by_author = Book.objects.filter(bookauthor__author=author)
 
-        context = {
-            'author': author,
-            'books_by_author': books_by_author
-        }
-        return render(request, 'authors/authors_detail.html', context)

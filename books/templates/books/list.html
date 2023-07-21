@@ -12,7 +12,7 @@
                         <img src="{{ book.cover_picture.url }}" alt="" class="book-card-img">
                         <div class="card-content">
                             <div class="book-name">{{ book.title }}</div>
-                            <div class="book-by">by {{ book.book_author }}</div>
+                            <div class="book-by">by {{ book.author.full_name }}</div>
 {#                            <div class="rate">#}
 {#                                <fieldset class="rating book-rate">#}
 {#                                    <input type="checkbox" id="star-c1" name="rating" value="5">#}
