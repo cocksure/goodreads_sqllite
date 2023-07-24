@@ -31,6 +31,7 @@ def search_books(query):
     books = Book.objects.filter(title__icontains=query)
     return books
 
+
 class AuthorsDetailView(View):
     def get(self, request, id):
         author = Author.objects.get(id=id)
@@ -41,6 +42,7 @@ class AuthorsDetailView(View):
             'books_by_author': books_by_author
         }
         return render(request, 'authors/authors_detail.html', context)
+
 
 class BooksView(View):
     def get(self, request):
@@ -197,6 +199,3 @@ class DeleteReviewView(LoginRequiredMixin, View):
         messages.success(request, "You have successfully deleted this review")
 
         return redirect(reverse("books:detail", kwargs={"id": book_id}))
-
-
-

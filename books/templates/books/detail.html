@@ -12,18 +12,19 @@
                      alt="cover image">
             </div>
             <div class="col-9 ">
-                <h1>{{ book.title }}</h1>
+                <h2>{{ book.title }}</h2>
                 <div class="mb-2">
-                        <span class="fst-italic">
+                        <span class="fst-italic mb-3">
                             Authored by:
                             {% for book_author in book.bookauthor_set.all %}
-                                {% if forloop.last %}
-                                    {{ book_author.author.full_name }}
-                                {% else %}
-                                    {{ book_author.author.full_name }},
-                                {% endif %}
+                                <a class="text-decoration-none"
+                                   href="{% url 'books:authors_detail' book_author.author.id %}">
+                                {{ book_author.author.full_name }}
+                                 </a>
+                                {% if not forloop.last %},{% endif %}
                             {% endfor %}
-                        </span>
+                        </span><hr>
+
                 </div>
                 <p>{{ book.description }}</p>
             </div>
@@ -50,7 +51,8 @@
             <textarea class="w-100 mb-3" name="comment" rows="5" cols="40"></textarea>
             <button class="btn btn-success btn-sm" type="submit">Добавить отзыв</button>
         </form>
-    </div><hr>
+    </div>
+    <hr>
 
     {% if book.bookreview_set.exists %}
         <h4 class="mb-3">- Reviews -</h4>

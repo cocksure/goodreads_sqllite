@@ -88,7 +88,6 @@
 .default-style .ui-bordered {
     border: 1px solid rgba(24,28,33,0.06);
 }
-
 .custom-nav {
     border-radius: 5px;
     padding: 5px;
@@ -96,19 +95,41 @@
 
 .custom-nav-link {
     color: black;
-  font-weight: bold;
+    font-weight: bold;
 }
-.custom-nav-link:active {
-        color: white;
-    background-color: #787188;
-    border-radius: 5px;
-}
+
+/* Remove .custom-nav-link:active - we won't need it for the active category link */
 
 .custom-nav-link:hover {
     color: white;
     background-color: #787188;
     border-radius: 5px;
 }
+
+/* Apply styles to the active category link */
+.nav-item.active-category .custom-nav-link {
+    color: white;
+    background-color: #787188;
+    border-radius: 5px;
+    /* Add your desired styling for the active link here */
+    /* For example, make the text white with a dark gray background */
+    /* You can adjust the background color, border-radius, and any other styles */
+    /* that you want to apply when the link is active */
+}
+
+/* More specificity to override Bootstrap styles */
+.navbar .navbar-nav .nav-item.active-category .custom-nav-link {
+    color: white;
+    background-color: #787188;
+    border-radius: 5px;
+    /* Add your desired styling for the active link here */
+    /* For example, make the text white with a dark gray background */
+    /* You can adjust the background color, border-radius, and any other styles */
+    /* that you want to apply when the link is active */
+}
+
+
+
 
 
 

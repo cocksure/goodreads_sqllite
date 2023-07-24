@@ -7,7 +7,7 @@
     <div class="book-store">
 
         <div class="book-slide">
-            <div class="book js-flickity" data-flickity-options='{ "wrapAround": true }'>
+            <div class="book js-flickity" data-flickity-options='{ "wrapAround": true, "autoPlay": true, "pauseAutoPlayOnHover": true }'>
                 {% for book in books|slice:":6" %}
                     <div class="book-cell">
                         <div class="book-img">
@@ -17,7 +17,7 @@
                         </div>
                         <div class="book-content">
                             <div class="book-title">{{ book.title }}</div>
-                            <div class="book-author">by {{ book.book_author }}</div>
+                            <div class="book-author">{{ book.book_author }}</div>
 {#                            <div class="rate">#}
 {#                                <fieldset class="rating">#}
 {#                                    <input type="checkbox" id="star5" name="rating" value="5"/>#}

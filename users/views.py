@@ -13,6 +13,7 @@ class RegisterView(View):
         context = {
             "form": create_form
         }
+        messages.success(request, 'You have successfully signed up!')
         return render(request, "users/register.html", context)
 
     def post(self, request):
